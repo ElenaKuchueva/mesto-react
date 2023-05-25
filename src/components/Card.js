@@ -1,7 +1,6 @@
 import React from "react";
 
 function Card(card) {
-
   function handleCardClick() {
     card.onCardClick(card);
   }
@@ -13,11 +12,11 @@ function Card(card) {
         type="button"
         aria-label="Удалить."
       ></button>
-      <img 
-      className="element__image"
-      src={card.link}
-      alt={card.name}
-      onClick={handleCardClick}
+      <img
+        className="element__image"
+        src={card.link}
+        alt={card.name}
+        onClick={handleCardClick}
       />
       <div className="element__description">
         <h2 className="element__title">{card.name}</h2>

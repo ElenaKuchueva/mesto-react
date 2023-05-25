@@ -8,34 +8,33 @@ import Footer from "./Footer.js";
 import PopupWithForm from "./PopupWithForm.js";
 import ImagePopup from "./ImagePopup.js";
 
-
 function App() {
-const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
-const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
-const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
-const [selectedCard, setSelectedCard] = React.useState({})
+  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState({});
 
-function closeAllPopups() {
-  setEditProfilePopupOpen(false)
-  setAddPlacePopupOpen(false)
-  setEditAvatarPopupOpen(false)
-  setSelectedCard({})
-}
+  function closeAllPopups() {
+    setEditProfilePopupOpen(false);
+    setAddPlacePopupOpen(false);
+    setEditAvatarPopupOpen(false);
+    setSelectedCard({});
+  }
 
   return (
     <div className="page">
       <Header />
 
-      <Main 
-      onEditProfile={setEditProfilePopupOpen}
-      onAddPlace={setAddPlacePopupOpen}
-      onEditAvatar={setEditAvatarPopupOpen}
-      onCardClick={setSelectedCard}
+      <Main
+        onEditProfile={setEditProfilePopupOpen}
+        onAddPlace={setAddPlacePopupOpen}
+        onEditAvatar={setEditAvatarPopupOpen}
+        onCardClick={setSelectedCard}
       />
 
       <Footer />
 
-      Поп ап: изменить аватар
+      {/* Поп ап: изменить аватар */}
       <PopupWithForm
         name="popupAvatar"
         title="Обновить аватар"
@@ -56,12 +55,8 @@ function closeAllPopups() {
         <span className="newAvatar-message-error field-message-error"></span>
       </PopupWithForm>
 
-      Поп ап: удаление карточки
-      <PopupWithForm
-        name="popupConfirm"
-        title="Вы уверены?"
-        textButton="Да"
-      >
+      {/* Поп ап: удаление карточки */}
+      <PopupWithForm name="popupConfirm" title="Вы уверены?" textButton="Да">
         <input
           className="field"
           type="url"
@@ -75,7 +70,7 @@ function closeAllPopups() {
         <span className="newAvatar-message-error field-message-error"></span>
       </PopupWithForm>
 
-      //Поп ап: изменить профиль
+      {/* //Поп ап: изменить профиль */}
       <PopupWithForm
         name="popupEdit"
         title="Редактировать профиль"
@@ -109,13 +104,13 @@ function closeAllPopups() {
         <span className="occupation-message-error field-message-error"></span>
       </PopupWithForm>
 
-      //Поп ап: добавить новую карточку
-      <PopupWithForm 
-      name="popupAdd" 
-      title="Новое место" 
-      textButton="Сохранить"
-      isOpen={isAddPlacePopupOpen}
-      onClose={closeAllPopups}
+      {/* Поп ап: добавить новую карточку */}
+      <PopupWithForm
+        name="popupAdd"
+        title="Новое место"
+        textButton="Сохранить"
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
       >
         <input
           className="field"
@@ -141,13 +136,8 @@ function closeAllPopups() {
         <span className="link-message-error field-message-error"></span>
       </PopupWithForm>
 
-
-      //Поп ап: открыть картинку поверх остальных карточек
-      <ImagePopup 
-      card={selectedCard} 
-      onClose={closeAllPopups} 
-      />
-
+      {/* Поп ап: открыть картинку поверх остальных карточек */}
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
     </div>
   );
 }
