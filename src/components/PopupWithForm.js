@@ -1,5 +1,4 @@
 import React from "react";
-import css from "../index.css";
 
 function PopupWithForm({ title, name, textButton, children, isOpen, onClose}) {
   return (
