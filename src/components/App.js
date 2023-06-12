@@ -82,7 +82,8 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => setIsLoading(false))
   }
 
   function handleUpdateAvatar(infoAboutAvatar) {
@@ -95,7 +96,8 @@ function App() {
       })
       .catch((error) => {
         console.log(`Ошибка: ${error}`);
-      });
+      })
+      .finally(() => setIsLoading(false))
   }
 
   function handleAddPlaceSubmit(cardData) {
@@ -108,7 +110,8 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => setIsLoading(false))
   }
 
   return (
