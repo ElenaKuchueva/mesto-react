@@ -1,9 +1,9 @@
 import React from "react";
 
-function PopupWithForm({ title, name, textButton, children, isOpen, onClose }) {
+function PopupWithForm({ title, name, textButton, children, isOpen, onClose, onSubmit }) {
   return (
-    <div className={`popup popup_type_${name} ${isOpen ? "popup_opened" : ""}`}>
-      <div className="popup__container">
+    <div className={`popup popup_type_${name} ${isOpen ? "popup_opened" : ""}`}  onClick={onClose}>
+      <div className="popup__container"  onClick={(evt) => evt.stopPropagation()}>
         <button
           className="popup__close"
           type="button"
@@ -12,7 +12,7 @@ function PopupWithForm({ title, name, textButton, children, isOpen, onClose }) {
         ></button>
         <div className="form">
           <h2 className="form__heading">{title}</h2>
-          <form className="fields" name={name}>
+          <form className="fields" name={name} onSubmit={onSubmit}>
             {children}
             <button
               className="submit"

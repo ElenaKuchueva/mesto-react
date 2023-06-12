@@ -6,7 +6,6 @@ class Api {
 
   _handleResponse(res) {
     if (res.ok) {
-      (res) => console.log(res.json);
       return res.json();
     } else {
       return Promise.reject(`Ошибка: ${res.status}`);
@@ -86,28 +85,15 @@ deleteCard(cardId) {
 
 //------------Лайки------------------
 
-//Удалить лайк на карточке
-  deleteLike(cardId) {
-    return fetch(`${this.url}cards/${cardId}/likes`, {
-      method: "DELETE",
-      headers: this.headers,
-    })
+changeLikeCardStatus(cardId, isLiked) {
+  return fetch(`${this.url}cards/${cardId}/likes`, {
+    method: `${!isLiked ? 'DELETE' : 'PUT'}`,
+    headers: this.headers,
+  })
     .then((res) => this._handleResponse(res))
-  }
-
-
-//Добавить лайк
-  addLike(cardId) {
-    return fetch(`${this.url}cards/${cardId}/likes`, {
-        method: "PUT",
-        headers: this.headers,
-      })
-      .then((res) => this._handleResponse(res))
- }
-
 }
 
-
+}
 
 const api = new Api("https://mesto.nomoreparties.co/v1/cohort-65/", {
   authorization: "96facf9d-e199-4449-9f73-b185bc2a61b7",
